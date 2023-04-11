@@ -9,12 +9,17 @@ pipeline {
    
     stage('Install Dependencies') {
       steps {
-        sh 'cd /var/jenkins_home/workspace/TestCICDPipeline/my-project && npm install  && yarn install'
+        sh 'cd /var/jenkins_home/workspace/TestCICDPipeline/my-project && npm install'
       }
     }
-    stage('Build and Run Project') {
+    stage('Build') {
       steps {
-        sh 'export PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin && cd /var/jenkins_home/workspace/TestCICDPipeline/my-project &&  yarn build '
+        sh 'export PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin && cd /var/jenkins_home/workspace/TestCICDPipeline/my-project && npm run build'
+      }
+    }
+    stage('Run Project') {
+      steps {
+        sh 'cnpm run serve'
       }
     }
   }
