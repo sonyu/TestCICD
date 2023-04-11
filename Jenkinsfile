@@ -9,7 +9,6 @@ pipeline {
    
     stage('Install Dependencies') {
       steps {
-        sh 'npm install -g yarn'
         sh 'cd /var/jenkins_home/workspace/TestCICDPipeline/my-project && npm install  && yarn install'
       }
     }
