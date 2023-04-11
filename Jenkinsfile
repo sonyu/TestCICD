@@ -7,30 +7,21 @@ pipeline {
       }
     }
     stage('Clean and Install') {
-   steps {
-      sh 'npm cache clean --force'
-      sh 'rm -rf node_modules'
-      sh 'cd my-project'
-      sh 'npm cache clean --force'
-      sh 'rm -rf node_modules'
-   }
-}
-    stage('Install Dependencies') {
-    steps {
-      sh 'cd my-project'
-      sh 'npm install -g @vue/cli'
-        sh 'npm install '
+      steps {
+        sh 'npm cache clean --force'
+        sh 'rm -rf node_modules'
+        sh 'cd my-project && npm cache clean --force && rm -rf node_modules && cd ..'
+      }
     }
-}
+    stage('Install Dependencies') {
+      steps {
+        sh 'cd my-project && npm install -g @vue/cli && npm install'
+      }
+    }
     stage('Build and Run Project') {
-  steps {
-    sh 'cd my-project'
-        sh 'export PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin'
-        sh 'npm install -g @vue/cli'
-        sh 'npm install'
-        sh 'npm run build'
-        sh 'npm run serve'
-  }
-}
+      steps {
+        sh 'cd my-project && export PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin && npm install -g @vue/cli && npm install && npm run build && nohup npm run serve &'
+      }
+    }
   }
 }
