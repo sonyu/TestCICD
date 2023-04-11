@@ -18,15 +18,14 @@ pipeline {
     stage('Install Dependencies') {
     steps {
       sh 'cd my-project'
-        sh 'npm install'
+        sh 'npm install --no-optional'
     }
 }
     stage('Build and Run Project') {
   steps {
     sh 'cd my-project'
         sh 'export PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin'
-        sh 'npm install'
-        sh 'npm install -g @vue/cli'
+        sh 'npm install --no-optional 
         sh 'npm run serve'
   }
 }
