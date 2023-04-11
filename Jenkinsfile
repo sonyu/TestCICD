@@ -1,7 +1,20 @@
-steps {
-    sh 'echo "Hello World"'
-    git url: 'https://github.com/sonyu/TestCICD.git', branch: 'main'
-    mvn clean package
-    sh 'docker build -t myapp .'
-    sh 'docker run -p 8080:8080 myapp'
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                sh 'make build'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'make test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'make deploy'
+            }
+        }
+    }
 }
