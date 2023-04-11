@@ -10,8 +10,9 @@ pipeline {
     stage('Build and Run Project') {
   steps {
     sh 'cd my-project'
-    sh '/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin/npm install'
-    sh '/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin/npm run serve'
+        sh 'export PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin'
+        sh 'npm install'
+        sh 'npm run serve'
   }
 }
   }
