@@ -7,19 +7,12 @@ pipeline {
       }
     }
     
-    stage('Check NodeJS version') {
-      steps {
-        
-          sh 'npm version'
-      }
+    stage('Build and Run Project') {
+    steps {
+        sh 'cd my-project'
+        sh 'npm install'
+        sh 'npm run serve'
     }
-    
-    stage('Build') {
-      steps {
-        withEnv(['PATH+NODE=/usr/bin']) {
-          sh 'npm run build'
-        }
-      }
-    }
+}
   }
 }
