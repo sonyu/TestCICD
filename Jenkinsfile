@@ -20,7 +20,7 @@ pipeline {
     }
     stage('Build and Run Project') {
       steps {
-        sh 'cd my-project && export PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin && npm install -g @vue/cli && npm install && npm run build && nohup npm run serve &'
+        sh 'export PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin && npm run build'
       }
     }
   }
