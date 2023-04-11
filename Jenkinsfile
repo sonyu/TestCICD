@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Run Project') {
       steps {
-        sh 'cnpm run serve'
+        sh 'npm run serve'
       }
     }
   }
