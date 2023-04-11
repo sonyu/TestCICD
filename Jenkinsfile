@@ -9,6 +9,7 @@ pipeline {
     
     stage('Build and Run Project') {
       steps {
+       sh 'cd my-project '
         sh 'export PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin && npm run build'
       }
     }
