@@ -18,7 +18,8 @@ pipeline {
     stage('Install Dependencies') {
     steps {
       sh 'cd my-project'
-        sh 'npm install --no-optional'
+      sh 'npm install -g @vue/cli'
+        sh 'npm install '
     }
 }
     stage('Build and Run Project') {
