@@ -17,6 +17,7 @@ pipeline {
     sh 'cd my-project'
         sh 'export PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin'
         sh 'npm install'
+        sh 'npm install -g @vue/cli'
         sh 'npm run serve'
   }
 }
