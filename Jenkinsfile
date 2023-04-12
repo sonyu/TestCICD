@@ -16,6 +16,11 @@ pipeline {
       steps {
         sh 'export PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin:/usr/local/lib/node_modules/@vue/cli/bin && cd /var/jenkins_home/workspace/TestCICDPipeline/my-project && npm install --save-dev @vue/cli-service && npm run build'
       }
-    }    
+    }  
+    stage('Get Latest Commit') {
+      steps {
+        sh 'git log -n 1 --pretty=format:"%h - %an, %ar : %s"'
+      }
+    }  
   }
 }
