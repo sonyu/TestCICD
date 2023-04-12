@@ -16,11 +16,6 @@ pipeline {
       steps {
         sh 'export PATH=$PATH:/var/jenkins_home/tools/jenkins.plugins.nodejs.tools.NodeJSInstallation/node/bin:/usr/local/lib/node_modules/@vue/cli/bin && cd /var/jenkins_home/workspace/TestCICDPipeline/my-project && npm install --save-dev @vue/cli-service && npm run build'
       }
-    }
-    stage('Run Project') {
-      steps {
-        sh 'npm run serve'
-      }
-    }
+    }    
   }
 }
