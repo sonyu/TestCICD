@@ -9,7 +9,7 @@ pipeline {
    
     stage('Install Dependencies') {
       steps {
-        sh 'cd /var/jenkins_home/workspace/TestCICDPipeline/my-project && npm install'
+        sh 'cd /var/jenkins_home/workspace/test_cicd/my-project && npm install'
       }
     }
     stage('Build') {
